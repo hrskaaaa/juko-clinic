@@ -10,7 +10,7 @@ $color-brand-dark: #6B5A4E;
 $color-secondary-light: #F3DED0;
 $color-secondary-dark: #E3C9B8;
 // breakpoints
-$bp-tablet: 1024px;
+$bp-tablet: 768px;
 
 $bp-desktop: 1440px;
 
@@ -41,6 +41,20 @@ h6 {
     margin: 0;
     font-family: 'Playfair Display', serif;
     color: $color-primary-dark;
+}
+
+h1 {
+    font-size: 32px;
+    letter-spacing: 0.04rem;
+
+    @include up($bp-tablet) {
+        font-size: 40px;
+    }
+
+    @include up($bp-desktop) {
+        font-size: 56px;
+    }
+
 }
 
 h2 {
@@ -207,17 +221,19 @@ ul {
     padding-bottom: 36px;
 
     @include up($bp-tablet) {
-        padding-top: 0px;
+        padding: 0px;
     }
 
     .hero-container {
         display: flex;
+        flex-direction: column;
 
 
         @include up($bp-tablet) {
             gap: 32px;
             height: 100%;
             align-items: center;
+            flex-direction: row;
             flex: 1;
         }
 
@@ -229,13 +245,12 @@ ul {
             display: none;
 
             @include up($bp-tablet) {
-                display: inline-block;
+                display: block;
+                min-width: 0;
+                flex: 1;
                 width: 100%;
                 height: auto;
-                flex: 1;
             }
-
-
         }
 
         .hero-content {
@@ -243,9 +258,10 @@ ul {
             flex-direction: column;
             gap: 80px;
 
-            @include up($bp-desktop) {
+            @include up($bp-tablet) {
                 height: 100%;
                 flex: 1;
+                gap: 48px;
             }
 
             .hero-text {
@@ -253,11 +269,13 @@ ul {
                 flex-direction: column;
                 gap: 40px;
 
-                h1 {
-                    font-size: 32px;
-                    letter-spacing: 0.04rem;
+                @include up($bp-tablet) {
+                    gap: 24px;
                 }
 
+                @include up($bp-desktop) {
+                    gap: 16px;
+                }
             }
 
 
